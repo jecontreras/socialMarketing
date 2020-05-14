@@ -58,7 +58,7 @@ Procedures.procesoPaginacion = async(count, plataforma)=>{
     paginasTotal = count / 10;
     let funPlat = plataforma;
     let LISTJSON = Array();
-    console.log("=>>>>>>>>cuanto",paginasTotal, count);
+    console.log("=>>>>>>>>cuanto",paginasTotal, count); 
     for(let i = 0; i < paginasTotal; i++){
         await sleep(1)
         let result = await funPlat( 10, i );
