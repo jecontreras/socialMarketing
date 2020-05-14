@@ -19,53 +19,24 @@ module.exports.tarea = async function() {
         process.exit(0)
         
     }
-    cron.AgregarTarea(tarea)
-    /////////////////////////////////////////////////////////////////////////////////////////////
+    cron.AgregarTarea(tarea);
 
-    cron.iniciar()
-    tarea        = new Object()
-    tarea.nombre = "Creacion de tareas de Facturas"
-    tarea.tiempo = 60
-    tarea.unidad = "minuto"
-    tarea.log    = false
-    tarea.accion = async function(){
-        
-        //console.log("Creando tarea de Facturas")
-        await FacturasServices.init();
-        
-    }
-    cron.AgregarTarea(tarea)
-    /////////////////////////////////////////////////////////////////////////////////////////////
+     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    cron.iniciar()
-    tarea        = new Object()
-    tarea.nombre = "Enviado tarea de Facturas get"
-    tarea.tiempo = 1
-    tarea.unidad = "minuto"
-    tarea.log    = false
-    tarea.accion = async function(){
-        
-        console.log("Enviado tarea de Facturas get")
-        await FacturasServices.enviarFacturas();
-        
-    }
-    cron.AgregarTarea(tarea)
-    /////////////////////////////////////////////////////////////////////////////////////////////
-
-    cron.iniciar()
-    tarea        = new Object()
-    tarea.nombre = "Consultando Facturas en mora tarea"
-    tarea.tiempo = 15
-    tarea.unidad = "minuto"
-    tarea.log    = false
-    tarea.accion = async function(){
-        
-        console.log("Consultando Facturas en mora tarea")
-        await FacturasServices.consultarFacturasMora();
-        
-    }
-    cron.AgregarTarea(tarea)
-    /////////////////////////////////////////////////////////////////////////////////////////////
+     tarea        = new Object()
+     tarea.nombre = "Tarea de Mensajes Programados"
+     tarea.tiempo = 60
+     tarea.unidad = "minuto"
+     tarea.log    = false
+     tarea.accion = async function(){
+         
+         console.log("*******************Mensajes Programados***************");
+         MensajesServices.tareaMensajes();
+         cron.parar()
+         process.exit(0)
+         
+     }
+     cron.AgregarTarea(tarea);
 
     cron.iniciar()
 }

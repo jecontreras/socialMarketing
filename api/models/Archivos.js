@@ -8,9 +8,9 @@
 module.exports = {
 
   attributes: {
-    contrato:{
-      model: 'contrato'
-    },
+    // contrato:{
+    //   model: 'contrato'
+    // },
     name: {
       type: 'string',
       required: true

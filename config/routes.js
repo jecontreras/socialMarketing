@@ -20,9 +20,6 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
-  'POST /contrato/querys': 'ContratoController.querys',
-  'POST /contrato/create': 'ContratoController.create',
-  'POST /facturas/querys': 'FacturasController.querys',
   'POST /empresas/querys': 'EmpresasController.querys',
   'POST /user/querys': 'UserController.querys',
   'POST /user/register': 'UserController.register',
@@ -30,7 +27,11 @@ module.exports.routes = {
   'POST /rol/querys': 'RolController.querys',
   'POST /pais/querys': 'PaisController.querys',
   'POST /archivos/querys': 'ArchivosController.querys',
-
+  'POST /mensajes/querys': 'MensajesController.querys',
+  'POST /empresa/querys': 'EmpresaController.querys',
+  'POST /mensajes/probando': 'MensajesController.procesoLocomproaqui',
+  'POST /mensajes/create': 'MensajesController.create',
+  'POST /mensajes/renvio': 'MensajesController.renvio',
 
   /***************************************************************************
   *                                                                          *
