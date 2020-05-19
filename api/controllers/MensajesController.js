@@ -57,7 +57,7 @@ Procedures.probando = async(req, res)=>{
 Procedures.getPlataformas = async( req, res )=>{
     let params = req.allParams();
     let resultado = Object();
-
+    console.log("****", params);
     resultado = await RequestServices.get(  params.url, 1);
     if(!resultado) return resultado;
     console.log("=>>>>>>>>",resultado.count);
