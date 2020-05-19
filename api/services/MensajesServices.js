@@ -1,6 +1,7 @@
 let Procedures = Object();
 let urlPlataforma = String();
 const moment = require('moment');
+const _ = require('lodash');
 
 Procedures.tareaMensajes = async ()=>{
     let resultado = Object();
@@ -64,6 +65,7 @@ Procedures.procesoPaginacion = async(count)=>{
         let result = await funPlat( 10, i );
         LISTJSON.push( ... result );
     }
+    LISTJSON = _.unionBy(LISTJSON || [], LISTJSON, 'id');
     console.log("=>>>>>>>>cuanto",LISTJSON.length);
     return LISTJSON;
 }
