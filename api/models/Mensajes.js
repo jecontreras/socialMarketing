@@ -25,7 +25,7 @@ module.exports = {
     //   type: 'string'
     // },
     tipoEnvio:{
-      type: 'integer',  // 0 emails , 2 plataforma
+      type: 'integer',  // 0 emails , 1 plataforma , 2  whatsapp
       required: true  
     },
     creado:{

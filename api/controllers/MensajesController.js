@@ -53,4 +53,16 @@ Procedures.probando = async(req, res)=>{
     Mailer.sendWelcomeMail({ text: "Hello", descripcion: "jose pruebas", subject: "josepragrame123@gmail.com" });
 }
 
+
+Procedures.getPlataformas = async( req, res )=>{
+    let params = req.allParams();
+    let resultado = Object();
+
+    resultado = await RequestServices.get(  params.url, 1);
+    if(!resultado) return resultado;
+    console.log("=>>>>>>>>",resultado.count);
+    let listPaginado = await MensajesServices.procesoPaginacion( resultado.count );
+    return res.status(200).send( { status: 200, data: listPaginado });
+}
+
 module.exports = Procedures;

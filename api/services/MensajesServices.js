@@ -48,15 +48,15 @@ Procedures.procesoLocomproaqui = async( data, plataforma )=>{
     resultado = await RequestServices.get(  urlPlataforma, 1);
     if(!resultado) return resultado;
     console.log("=>>>>>>>>",resultado.count);
-    let listPaginado = await Procedures.procesoPaginacion( resultado.count, Procedures.paginaGetLocompro);
+    let listPaginado = await Procedures.procesoPaginacion( resultado.count );
     console.log("=>>>>>>>>",listPaginado.length);
     await Procedures.recorrecArreglo( listPaginado, data.descripcion, data.subtitulo, plataforma );
 }
 
-Procedures.procesoPaginacion = async(count, plataforma)=>{
+Procedures.procesoPaginacion = async(count)=>{
     let paginasTotal = 0;
     paginasTotal = count / 10;
-    let funPlat = plataforma;
+    let funPlat = Procedures.paginaGetLocompro;
     let LISTJSON = Array();
     console.log("=>>>>>>>>cuanto",paginasTotal, count); 
     for(let i = 0; i < paginasTotal; i++){

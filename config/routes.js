@@ -32,6 +32,7 @@ module.exports.routes = {
   'POST /mensajes/probando': 'MensajesController.procesoLocomproaqui',
   'POST /mensajes/create': 'MensajesController.create',
   'POST /mensajes/renvio': 'MensajesController.renvio',
+  'POST /mensajes/getPlataformas': 'MensajesController.getPlataformas',
 
   /***************************************************************************
   *                                                                          *
