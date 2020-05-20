@@ -49,6 +49,9 @@ module.exports = {
     estadoActividad:{
       type: 'boolean',
       defaultsTo: false
+    },
+    imagenWhat:{
+      type: 'string'
     }
 
   },

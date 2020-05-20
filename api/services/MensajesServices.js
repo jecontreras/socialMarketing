@@ -5,8 +5,7 @@ const _ = require('lodash');
 
 Procedures.tareaMensajes = async ()=>{
     let resultado = Object();
-
-    resultado = await Mensajes.find( { where: { programado: true, estadoActividad: false } } );
+    resultado = await Mensajes.find( { where: { programado: true, estadoActividad: false, tipoEnvio: [0,1] } } );
     if(Object.keys(resultado).length == 0 ) return false;
     for(let row of resultado) { 
         if( !row.fechaEnio ) continue;
