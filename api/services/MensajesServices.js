@@ -53,19 +53,26 @@ Procedures.procesoLocomproaqui = async( data, plataforma )=>{
     console.log("=>>>>>>>>",listPaginado.length);
     await Procedures.recorrecArreglo( listPaginado, data.descripcion, data.subtitulo, plataforma );
 }
-
-Procedures.procesoPaginacion = async(count)=>{
+Procedures.getUrlPlatform = async( count, url )=>{
+    urlPlataforma = url;
+    console.log("11111111111111111",urlPlataforma, count)
+    let resultado = await Procedures.procesoPaginacion( count );
+    console.log("22222222222222",resultado.length, url)
+    return resultado;
+}
+Procedures.procesoPaginacion = async( count )=>{
     let paginasTotal = 0;
-    paginasTotal = count / 10;
-    let funPlat = Procedures.paginaGetLocompro;
+    paginasTotal = count / 30;
+    paginasTotal = parseInt(paginasTotal);
     let LISTJSON = Array();
     console.log("=>>>>>>>>cuanto",paginasTotal, count); 
     for(let i = 0; i < paginasTotal; i++){
-        await sleep(1)
-        let result = await funPlat( 10, i );
+        // await sleep(1)
+        let result = await Procedures.paginaGetLocompro( 30, i );
+        console.log(",,,", result.length )
         LISTJSON.push( ... result );
     }
-    LISTJSON = _.unionBy(LISTJSON || [], LISTJSON, 'id');
+    //LISTJSON = _.unionBy(LISTJSON || [], LISTJSON, 'id');
     console.log("=>>>>>>>>cuanto",LISTJSON.length);
     return LISTJSON;
 }
