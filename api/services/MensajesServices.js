@@ -25,7 +25,7 @@ Procedures.armandoArray = async( data )=>{
 Procedures.procesoSiguiente = async( params2, resultado )=>{
     if( ( params2.tipoEnvio == '0' || params2.tipoEnvio == 0 ) && params2.listEmails.length == 0 ) await Procedures.mensajeNormal( params );
     if( ( params2.tipoEnvio == '1' || params2.tipoEnvio == 1 ) && params2.listEmails.length == 0 ) await Procedures.mensajePlataforma( resultado );
-    if( params2.listEmails.length > 0 ) for( let row of params2.listEmails) await Procedures.mensajeNormal( { emails: row.usu_email, descripcion: params2.descripcion, subtitulo: params2.subtitulo } );
+    if( ( params2.listEmails.length > 0 ) && ( ( params2.tipoEnvio == '0' || params2.tipoEnvio == 0 ) || ( params2.tipoEnvio == '1' || params2.tipoEnvio == 1 ) ) ) for( let row of params2.listEmails) await Procedures.mensajeNormal( { emails: row.usu_email, descripcion: params2.descripcion, subtitulo: params2.subtitulo } );
 }
 
 Procedures.mensajeNormal = async(data)=>{
@@ -71,7 +71,7 @@ Procedures.procesoPaginacion = async( count )=>{
         console.log(",,,", result.length )
         LISTJSON.push( ... result );
     }
-    //LISTJSON = _.unionBy(LISTJSON || [], LISTJSON, 'id');
+    LISTJSON = _.unionBy(LISTJSON || [], LISTJSON, 'id');
     console.log("=>>>>>>>>cuanto",LISTJSON.length);
     return LISTJSON;
 }
