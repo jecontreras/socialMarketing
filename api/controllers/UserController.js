@@ -7,6 +7,7 @@
 
 const Procedures = Object();
 const Passwords = require('machinepack-passwords');
+var jwt = require('jsonwebtoken');
 
 Procedures.register = async(req, res)=>{
     let
@@ -33,7 +34,9 @@ Procedures.register = async(req, res)=>{
   params.codigo = codigo();
   user = await User.create(params).fetch();
   if(!user) return res.badRequest(err);
-  return res.ok({status: 200, data: user});
+  let tokens = await Procedures.creacionTokens( user );
+  resulado.tokens = tokens;
+  return res.ok({ status: 200, data: user });
 }
 
 Procedures.encryptedPassword = (password) =>{
@@ -62,12 +65,27 @@ Procedures.login = async(req, res)=>{
     let password = await Procedures.chequearPassword(param, resulado);
     if(!password) return res.send({'success': false,'data': 'Contraseña incorrecta'});
     resulado.password = '';
+    let tokens = await Procedures.creacionTokens( resulado );
+    resulado.tokens = tokens;
     return res.send({
     'success': true,
     'data': 'Peticion realizada',
     'data': resulado
     });
 }
+
+Procedures.creacionTokens = async( data )=>{
+  let tokenData = {
+    username: data.email,
+    id: data.id
+  };
+  return new Promise( async( resolve ) => {
+    let token = jwt.sign( tokenData, 'Secret Password', { expiresIn: 60 * 60 * 24 /*expires in 24 hours */ });
+    await Cache.guardar( { user: data.id, rol: data.rol, tokens: token } );
+    return resolve( token );
+  })
+}
+
 Procedures.chequearPassword = async(param, user)=>{
     return new Promise(resolve=>{
         Passwords.checkPassword({
@@ -86,9 +104,11 @@ Procedures.chequearPassword = async(param, user)=>{
             });
     })
 }
+
 Procedures.querys = async(req, res)=>{
     let params = req.allParams();
     let resultado = Object();
+    // console.log("***********", await Cache.leer() );
     resultado = await QuerysServices(User,params);
     return res.ok( { status: 200, ...resultado } );
 }

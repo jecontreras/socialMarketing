@@ -19,5 +19,6 @@ module.exports.policies = {
 
    //'*': true,
    '*': ['tenant'],
+   'user/login': true
 
 };
