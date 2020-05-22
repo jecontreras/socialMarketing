@@ -57,11 +57,11 @@ Procedures.probando = async(req, res)=>{
 Procedures.getPlataformas = async( req, res )=>{
     let params = req.allParams();
     let resultado = Object();
-    // console.log("****", params);
+    console.log("****", params);
     resultado = await RequestServices.get(  params.url, 1);
     if(!resultado) return resultado;
     let listPaginado = await MensajesServices.getUrlPlatform( resultado.count, params.url );
-    // console.log("=>>>>>>>>********",listPaginado);
+    console.log("=>>>>>>>>********",listPaginado);
     return res.status(200).send( { status: 200, data: listPaginado });
 }
 
