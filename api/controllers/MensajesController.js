@@ -61,8 +61,18 @@ Procedures.getPlataformas = async( req, res )=>{
     resultado = await RequestServices.get(  params.url, 1);
     if(!resultado) return resultado;
     let listPaginado = await MensajesServices.getUrlPlatform( resultado.count, params.url );
-    console.log("=>>>>>>>>********",listPaginado);
+    let numeros = await Procedures.transFormarEmail( listPaginado );
+    await Mensajes.update( { id: params.id }, { emails: numeros })
+    console.log("************cantidad encontrado *****************", listPaginado.length );
     return res.status(200).send( { status: 200, data: listPaginado });
+}
+
+Procedures.transFormarEmail = async( lista = [] )=>{
+    let obj = "";
+    let formatiando = [];
+    for( let row of lista ) formatiando.push( ( row.usu_indicativo || 57 ) + ( row.usu_telefono || row.celular ) );
+    if( Object.keys(formatiando).length > 0 ) obj = formatiando.join();
+    return obj;
 }
 
 module.exports = Procedures;

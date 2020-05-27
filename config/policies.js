@@ -17,9 +17,10 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-   //'*': true,
-   '*': ['tenant'],
-   'user/login': true,
-   'mensajes/getPlataformas': true
+   '*': true,
+  //  '*': ['tenant'],
+  //  'user/login': true,
+  //  'mensajes/getPlataformas': true,
+  //  'mensajes': true,
 
 };

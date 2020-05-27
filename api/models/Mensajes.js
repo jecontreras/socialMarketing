@@ -52,6 +52,10 @@ module.exports = {
     },
     imagenWhat:{
       type: 'string'
+    },
+    cantidadEnviado:{
+      type: 'integer',
+      defaultsTo: 0
     }
 
   },
