@@ -32,9 +32,6 @@ module.exports.tarea = async function() {
          
          console.log("*******************Mensajes Programados***************");
          MensajesServices.tareaMensajes();
-         cron.parar()
-         process.exit(0)
-         
      }
      cron.AgregarTarea(tarea);
 
