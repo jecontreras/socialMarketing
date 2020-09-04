@@ -7,8 +7,8 @@ Procedures.sendWelcomeMail = async( obj )=>{
 
     return new Promise(resolve=>{
         const data = {
-            from: obj.from, // para quien es
-            to: 'josepragrame123@gmail.com',
+            from: 'victorlandazury1@gmail.com', 
+            to: obj.from, // para quien es
             subject: obj.subject, // subtitulo
             html: obj.text // mensaje
         };
