@@ -21,6 +21,27 @@ module.exports = {
     empresa:{
       model: 'empresa'
     },
+    listRotador:{
+      type: 'json'
+    },
+    rotadorMensajes:{
+      type: 'boolean'
+    },
+    cantidadLista:{
+      type: 'number'
+    },
+    pausar:{
+      type: 'boolean'
+    },
+    cantidadTiempoMensaje:{
+      type: 'number'
+    },
+    tiempoMsxPausa:{
+      type: 'number'
+    },
+    cantidadMsxPausa:{
+      type: 'number'
+    },
     // usuEmails:{
     //   type: 'string'
     // },
