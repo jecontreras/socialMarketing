@@ -9,7 +9,7 @@ module.exports.tarea = async function() {
 
     tarea        = new Object()
     tarea.nombre = "Reinicio Automatico 12 Horas"
-    tarea.tiempo = 12
+    tarea.tiempo = 120
     tarea.unidad = "hora"
     tarea.log    = false
     tarea.accion = async function(){
