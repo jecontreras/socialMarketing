@@ -8,7 +8,9 @@
 module.exports = {
 
   attributes: {
-
+    idPuesto:{
+      type: 'number' 
+    },
     subtitulo:{
       type: 'string'
     },
