@@ -62,11 +62,13 @@ Procedures.getPlataformas = async( req, res )=>{
     
     resultado = await RequestServices.get(  params.url, 1);
     if(!resultado) return resultado;
-    let listPaginado = await MensajesServices.getUrlPlatform( resultado.count, params.url );
     //validando si ya creo el mensajeNumeros
     let validando = await Procedures.validandoMensajes( { id: params.id });
 
-    if( !validando ) resultado = await Procedures.creandoMensajesNumeros( { id: params.id, cantidadLista: params.cantidadLista }, listPaginado );
+    if( !validando ) {
+        let listPaginado = await MensajesServices.getUrlPlatform( resultado.count, params.url );
+        resultado = await Procedures.creandoMensajesNumeros( { id: params.id, cantidadLista: params.cantidadLista }, listPaginado );
+    }
     resultado = await MensajesNumeros.find( { mensaje: params.id });
     let mensajes = await Mensajes.find( { id: params.id });
     mensajes = mensajes[0];
