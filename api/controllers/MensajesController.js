@@ -43,7 +43,7 @@ Procedures.renvio = async( req, res )=>{
 Procedures.creandoMensaje = async(data)=>{
     let resultado = Object();
     resultado = await Mensajes.create( data ).fetch();
-    resultado = await Mensajes.findOne({ id: resultado.id });
+    resultado = await Mensajes.findOne({ id: resultado.id }).populate('empresa');
     return resultado;
 }
 

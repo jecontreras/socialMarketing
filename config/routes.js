@@ -33,6 +33,7 @@ module.exports.routes = {
   'POST /mensajes/create': 'MensajesController.create',
   'POST /mensajes/renvio': 'MensajesController.renvio',
   'POST /mensajes/getPlataformas': 'MensajesController.getPlataformas',
+  'POST /mensajesnumeros/querys': 'MensajesNumerosController.querys',
 
   /***************************************************************************
   *                                                                          *

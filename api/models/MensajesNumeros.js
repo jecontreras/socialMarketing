@@ -10,10 +10,12 @@ module.exports = {
   attributes: {
 
     numerosPendientes:{
-      type: 'json'
+      type: 'json',
+      defaultsTo: []
     },
     numerosCompletados:{
-      type: 'json'
+      type: 'json',
+      defaultsTo: []
     },
     cantidadEnviados:{
       type: 'number'
