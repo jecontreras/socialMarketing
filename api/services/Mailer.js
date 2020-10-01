@@ -66,8 +66,10 @@ Procedures.sendWelcomeMail = async (obj) => {
         };
         let dominio = ( obj.to.split("@") )[1];
         // console.log( "***", dominio );
-        if( dominio == "gmail.com" || dominio == "Gmail.com") resolve( await Procedures.enviarGmail( textmail ) );
-        else if( dominio == "hotmail.com" || dominio == "Hotmail.com" || dominio == "outlook.com" || dominio == "Outlook.com" ) {
+        let cortando = textmail.to.split("@");
+        textmail.to = cortando[0] + cortando[1].toLowerCase();
+        if( dominio == "gmail.com" || dominio == "gmail.es") resolve( await Procedures.enviarGmail( textmail ) );
+        else if( dominio == "hotmail.com" || dominio == "outlook.com" || dominio == "outlook.es" ) {
             textmail.from = `joseeduar147@hotmail.com`;
             resolve( await Procedures.enviarOutlook( textmail ) );
         }
