@@ -30,7 +30,7 @@ Procedures.procesoSiguiente = async( params2, resultado )=>{
 
 Procedures.mensajeNormal = async(data)=>{
     let resultado = Object();
-    resultado = await Mailer.sendWelcomeMail( { from: data.emails, text: data.descripcion ,subject: data.subtitulo });
+    resultado = await Mailer.sendWelcomeMail( { from: data.subtitulo, text: data.descripcion, to: data.emails, descripcion: data.subtitulo });
     if( !resultado ) return resultado = { status:400, data: "Error al Crear" }
     else return resultado = { status:200, data: "Creado correcto" }
 } 
@@ -94,7 +94,7 @@ Procedures.recorrecArreglo = async(lista, mensaje, cabezera, plataforma )=>{
         let formato = {};
         if( plataforma.slug === 'publihazclick' ) formato = { usu_email: row.email };
         else formato = row;
-       let result =  await Mailer.sendWelcomeMail( { from: formato.usu_email, text: mensaje ,subject: cabezera });
+       let result =  await Mailer.sendWelcomeMail( { from: "", to: formato.usu_email, descripcion: cabezera, text: mensaje  });
        if( result ) console.log("Enviando");
     }
 }

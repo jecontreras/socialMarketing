@@ -29,7 +29,7 @@ module.exports.routes = {
   'POST /archivos/querys': 'ArchivosController.querys',
   'POST /mensajes/querys': 'MensajesController.querys',
   'POST /empresa/querys': 'EmpresaController.querys',
-  'POST /mensajes/probando': 'MensajesController.procesoLocomproaqui',
+  'POST /mensajes/probando': 'MensajesController.probando',
   'POST /mensajes/create': 'MensajesController.create',
   'POST /mensajes/renvio': 'MensajesController.renvio',
   'POST /mensajes/getPlataformas': 'MensajesController.getPlataformas',

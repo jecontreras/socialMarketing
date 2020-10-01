@@ -50,8 +50,8 @@ Procedures.creandoMensaje = async(data)=>{
 Procedures.probando = async(req, res)=>{
     let params = req.allParams();
     let resultado = Object();
+    Mailer.sendWelcomeMail({ text: "Hello", descripcion: "jose pruebas", subject: "joseeduar147@gmail.com" });
     res.status(200).send({ status: 200, data: "OK"})
-    Mailer.sendWelcomeMail({ text: "Hello", descripcion: "jose pruebas", subject: "josepragrame123@gmail.com" });
 }
 
 
@@ -64,9 +64,10 @@ Procedures.getPlataformas = async( req, res )=>{
     if(!resultado) return resultado;
     //validando si ya creo el mensajeNumeros
     let validando = await Procedures.validandoMensajes( { id: params.id });
-
+    // console.log("****", validando);
     if( !validando ) {
         let listPaginado = await MensajesServices.getUrlPlatform( resultado.count, params.url );
+        // console.log("*****+++++", listPaginado);
         resultado = await Procedures.creandoMensajesNumeros( { id: params.id, cantidadLista: params.cantidadLista }, listPaginado );
     }
     resultado = await MensajesNumeros.find( { mensaje: params.id });
