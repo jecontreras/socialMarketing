@@ -59,7 +59,7 @@ Procedures.sendWelcomeMail = async (obj) => {
     console.log("¨***", obj)
     return new Promise( async (resolve) => {
         textmail = {
-            from: obj.from || 'joseeduar147@hotmail.com',
+            from: obj.from,
             to: obj.to,
             subject: obj.descripcion || '',
             html: obj.text
@@ -67,10 +67,11 @@ Procedures.sendWelcomeMail = async (obj) => {
         let dominio = ( obj.to.split("@") )[1];
         // console.log( "***", dominio );
         let cortando = textmail.to.split("@");
-        textmail.to = cortando[0] + cortando[1].toLowerCase();
+        textmail.to = cortando[0] + "@" + cortando[1].toLowerCase();
         if( dominio == "gmail.com" || dominio == "gmail.es") resolve( await Procedures.enviarGmail( textmail ) );
         else if( dominio == "hotmail.com" || dominio == "outlook.com" || dominio == "outlook.es" ) {
             textmail.from = `joseeduar147@hotmail.com`;
+            console.log("*** data a enviar", textmail);
             resolve( await Procedures.enviarOutlook( textmail ) );
         }
         else resolve( false );
