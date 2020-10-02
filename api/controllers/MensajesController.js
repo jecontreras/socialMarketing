@@ -67,8 +67,8 @@ Procedures.getPlataformas = async( req, res )=>{
     // console.log("****", validando);
     if( !validando ) {
         let listPaginado = await MensajesServices.getUrlPlatform( resultado.count, params.url );
-        // console.log("*****+++++", listPaginado);
-        resultado = await Procedures.creandoMensajesNumeros( { id: params.id, cantidadLista: params.cantidadLista }, listPaginado );
+        // console.log( "*****+++++", listPaginado.length );
+        resultado = await Procedures.creandoMensajesNumeros( { id: params.id, cantidadLista: params.cantidadLista || 1 }, listPaginado );
     }
     resultado = await MensajesNumeros.find( { mensaje: params.id });
     let mensajes = await Mensajes.find( { id: params.id });
@@ -91,6 +91,8 @@ Procedures.validandoMensajes = async( data )=>{
 }
 
 Procedures.creandoMensajesNumeros = async( data, lista )=>{
+    for( let row of lista ) { if( !row.usu_telefono ) row.usu_telefono = row.celular }
+    // console.log( lista );
     lista = _.unionBy( lista || [], lista, 'usu_telefono' );
     let cantidadLista = Number( lista.length ) / Number( data.cantidadLista  || 0 );
     cantidadLista = parseInt( cantidadLista );
@@ -103,12 +105,12 @@ Procedures.creandoMensajesNumeros = async( data, lista )=>{
         index++;
         if( ( contado == cantidadLista ) ) {
             contado = 1;
-            armando.push( { username: row.usu_nombre, telefono: row.usu_telefono });
+            armando.push( { username: row.usu_nombre || row.name, telefono: row.usu_telefono || row.celular });
             dataFinix.push( { numerosPendientes: armando, mensaje: data.id } );
             armando = [];
         }else {
             contado++;
-            armando.push( { username: row.usu_nombre, telefono: row.usu_telefono });
+            armando.push( { username: row.usu_nombre || row.name, telefono: row.usu_telefono || row.celular });
             if( lista.length == index ) dataFinix.push( { numerosPendientes: armando, mensaje: data.id } );
         }
     }
