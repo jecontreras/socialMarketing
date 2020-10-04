@@ -15,7 +15,7 @@
     "mailgun-js": "^0.22.0",
     "moment": "^2.24.0",
     "node-mailjet": "^3.3.1",
-    "nodemailer": "^6.2.1",
+    "nodemailer": "^6.4.13",
     "nodemon": "^2.0.2",
     "request": "^2.88.2",
     "sails": "^1.2.3",
