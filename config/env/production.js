@@ -309,6 +309,25 @@ module.exports = {
     ***************************************************************************/
     cache: 365.25 * 24 * 60 * 60 * 1000, // One year
 
+    order: [
+      'cookieParser',
+      'session',
+      'bodyParser',
+      'compress',
+      'poweredBy',
+      'router',
+      'www',
+      'favicon',
+    ],
+    bodyParser: (function () {
+      var opts = {limit:10000000, parameterLimit:10000};
+      var fn;
+ 
+      // Default to built-in bodyParser:
+      fn = require('skipper');
+      return fn(opts);
+    }),
+
     /***************************************************************************
     *                                                                          *
     * Proxy settings                                                           *
