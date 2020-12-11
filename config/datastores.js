@@ -51,7 +51,9 @@ module.exports.datastores = {
     // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
     adapter: 'sails-mongo',
-    url: 'mongodb://jose147:jose98090871986@ds147746.mlab.com:47746/socialmarketings'
+    // url: 'mongodb://jose147:jose98090871986@ds147746.mlab.com:47746/socialmarketings'
+    url: 'mongodb://jose147:98090871986@cluster0-shard-00-00.eh2cx.mongodb.net:27017,cluster0-shard-00-01.eh2cx.mongodb.net:27017,cluster0-shard-00-02.eh2cx.mongodb.net:27017/socialmarketing?ssl=true&replicaSet=atlas-64shcy-shard-0&authSource=admin&retryWrites=true&w=majority',
+    ssl: true
   },
 
 
