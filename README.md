@@ -2,6 +2,16 @@
 
 a [Sails v1](https://sailsjs.com) application
 
+Backend de creación de envíos de cualquier plataforma de emails y WhatsApp creado con el framework de sails js de node js
+
+instalacion 
+npm i
+y instalas el framework
+https://sailsjs.com/
+
+y despues levantar el serve
+sails lift
+
 
 ### Links
 
