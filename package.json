@@ -10,7 +10,7 @@
     "@sailshq/socket.io-redis": "^5.2.0",
     "grunt": "1.0.4",
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "machinepack-passwords": "^2.3.0",
     "mailgun-js": "^0.22.0",
     "moment": "^2.24.0",
