@@ -82,7 +82,7 @@ Procedures.enviarGmail = async ( textmail ) => {
     return new Promise( async (resolve)  => {
         let transporter = nodemailer.createTransport({
             service: 'Gmail',
-            host: 'smtp.gmail.com',
+            //host: 'smtp.gmail.com',
             auth: {
                 user: 'solucionessistematicas123@gmail.com',
                 pass: '98090871986'
