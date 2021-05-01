@@ -15,7 +15,7 @@ Procedures.querys = async(req, res)=>{
 
 Procedures.create = async(req, res)=> {
     let params = req.allParams();
-    let resultado = Array();
+    let resultado = Array(); 
     for(let row of params.archivos) resultado.push(await Archivos.create(row).fetch());
     
     return res.ok( { status: 200, data:[ ...resultado ] } );
