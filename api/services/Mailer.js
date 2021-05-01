@@ -84,8 +84,8 @@ Procedures.enviarGmail = async ( textmail ) => {
             service: 'Gmail',
             host: 'smtp.gmail.com',
             auth: {
-                user: 'publichazclick2019@gmail.com',
-                pass: 'jose98090871986'
+                user: 'solucionessistematicas123@gmail.com',
+                pass: '98090871986'
             }
         });
 
